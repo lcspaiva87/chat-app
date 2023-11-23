@@ -1,11 +1,15 @@
 import cors from 'cors'
+import 'dotenv/config'
 import expres from 'express'
 import mongoose from 'mongoose'
+
 const app = expres()
 const port = process.env.PORT || 3000
 app.use(expres.json())
 app.use(cors())
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 mongoose
   .connect(String(process.env.DATABASE_URL))
   .then(() => {
